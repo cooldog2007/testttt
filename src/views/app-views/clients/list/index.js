@@ -7,6 +7,7 @@ import AvatarStatus from "components/shared-components/AvatarStatus";
 // import userData from "assets/data/user-list.data.json";
 import Loading from "components/shared-components/Loading/index.js";
 import { APP_PREFIX_PATH } from "configs/AppConfig";
+import { Link } from "react-router-dom/cjs/react-router-dom.min.js";
 export class UserList extends Component {
   state = {
     loading: true,
@@ -59,16 +60,15 @@ export class UserList extends Component {
         title: "User",
         dataIndex: "name",
         render: (_, record) => (
-          <div className="d-flex">
+          <Link
+            to={`${APP_PREFIX_PATH}/edit-profile/${record.id}`}
+            className="d-flex">
             <AvatarStatus
               src={record.img}
               name={record.name}
               subTitle={record.email}
-              onNameClick={() =>
-                (window.location.href = `${APP_PREFIX_PATH}/edit-profile/${record.id}`)
-              }
             />
-          </div>
+          </Link>
         ),
         sorter: {
           compare: (a, b) => {

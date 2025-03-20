@@ -87,7 +87,7 @@ export class EditProfile extends Component {
         .then((res) => res.json())
         .then((_) => {
           message.success({ content: "Done!", key, duration: 2 });
-          window.location.href = `${APP_PREFIX_PATH}/clients/list`;
+          this.props.history.push(`${APP_PREFIX_PATH}/clients/list`);
         });
     };
 
